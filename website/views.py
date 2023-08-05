@@ -1,8 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import New 
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 # Create your views here.
 
 news = [
@@ -41,5 +42,8 @@ def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
 
 def signUp(request):
-    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+    else:
+        form = UserCreationForm()
     return render(request, 'website/signup.html', {'form': form} )
