@@ -42,4 +42,4 @@ def contact(request):
 
 def signUp(request):
     form = UserCreationForm()
-    return render(request, '/signup.html', {'form': form} )
+    return render(request, 'website/signup.html', {'form': form} )
