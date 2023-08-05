@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import generic
 from .models import New 
 # Create your views here.
 
@@ -25,6 +26,14 @@ def index(request):
         'news': news
     }
     return render(request, 'website/index.html', context)
+
+class NewListView(ListView):
+    model = New
+    queryset = New.objects.filter(status=1).order_by('-date_created')
+    template_name = 'website/index.html'
+    context_object_name = 'news'
+    ordering = ['-date_created'] 
+    paginate_by = 3
 
 
 def contact(request):
