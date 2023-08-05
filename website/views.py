@@ -39,3 +39,7 @@ class NewListView(generic.ListView):
 
 def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
+
+def signUp(request):
+    form = UserCreationForm()
+    return render(request, '/signup.html', {'form': form} )
