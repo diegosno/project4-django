@@ -30,6 +30,12 @@ def index(request):
     }
     return render(request, 'website/index.html', context)
 
+def contact(request):
+    return render(request, 'website/contact.html', {'title': 'Contact'})
+
+def profile(request):
+    return render (request, 'users.profile.html')
+
 class NewListView(generic.ListView):
     model = New
     queryset = New.objects.filter(status=1).order_by('-date_created')
@@ -39,8 +45,7 @@ class NewListView(generic.ListView):
     paginate_by = 3
 
 
-def contact(request):
-    return render(request, 'website/contact.html', {'title': 'Contact'})
+
 
 def signUp(request):
     if request.method == 'POST':
@@ -49,7 +54,7 @@ def signUp(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Welcome {username}! Login to continue. ')
-            return redirect('login')
+            return redirect('website/login.html')
 
     else:
         form = signUpForm()
