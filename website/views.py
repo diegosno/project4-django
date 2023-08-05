@@ -4,7 +4,7 @@ from django.views import generic
 from .models import New 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from forms import signUpForm
+from .forms import signUpForm
 # Create your views here.
 
 news = [
