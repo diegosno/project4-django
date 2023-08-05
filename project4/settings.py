@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['project4-website-312d3f2d3af7.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
