@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
 from .models import New 
+from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 news = [
@@ -27,7 +28,7 @@ def index(request):
     }
     return render(request, 'website/index.html', context)
 
-class NewListView(ListView):
+class NewListView(generic.ListView):
     model = New
     queryset = New.objects.filter(status=1).order_by('-date_created')
     template_name = 'website/index.html'
