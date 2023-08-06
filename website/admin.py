@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import New
 from django_summernote.admin import SummernoteModelAdmin
 
+from .models import Profile
+
 
 @admin.register(New)
 class NewAdmin(SummernoteModelAdmin):
@@ -13,3 +15,4 @@ class NewAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
 
  
+admin.site.register(Profile)
