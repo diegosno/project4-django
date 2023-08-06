@@ -5,6 +5,7 @@ from .models import New
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import signUpForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 news = [
@@ -33,6 +34,7 @@ def index(request):
 def contact(request):
     return render(request, 'website/contact.html', {'title': 'Contact'})
 
+@login_required
 def profile(request):
     return render (request, 'users.profile.html')
 
