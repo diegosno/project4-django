@@ -1,4 +1,5 @@
 from django.db import models
+
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.utils import timezone
@@ -22,3 +23,6 @@ class New(models.Model):
     def __str__(self):
         return self.title
     
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    picture = models.ImageField(default='default.jpg', upload_to='user_pictures')
